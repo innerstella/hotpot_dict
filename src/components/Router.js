@@ -10,6 +10,7 @@ import Sour from "../routes/keyword/Sour";
 import Nutty from "../routes/keyword/Nutty";
 import Salty from "../routes/keyword/Salty";
 import MyPage from "../routes/MyPage";
+import Detail from "../routes/Detail";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -42,6 +43,9 @@ const AppRouter = ({ isLoggedIn }) => {
       </Routes>
       <Routes>
         <Route path="/salty" element={<Salty />} />
+      </Routes>
+      <Routes>
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

@@ -19,17 +19,17 @@ const Navigation = () => {
 
   return (
     <nav>
-      <span>
+      <p>
         <Link to="/">Home</Link>
-      </span>
+      </p>
       {isLoggedIn ? (
-        <span>
+        <p>
           <Link to="/mypage">My Page</Link>
-        </span>
+        </p>
       ) : (
-        <span>
+        <p>
           <Link to="/auth">Log In</Link>
-        </span>
+        </p>
       )}
     </nav>
   );

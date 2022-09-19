@@ -3,11 +3,12 @@ import { dbService } from "../fbase";
 
 const Detail = () => {
   //목록에서 클릭된 소스 이름 가져오기
-  const detailRecipeName = sessionStorage.getItem("recipeName");
-  // console.log(detailRecipeName);
   let currUrl = window.document.location.href;
   //배포하면, 배포 링크 따라서 다시 잘라주기
-  let currId = currUrl.substring(29);
+  //로컬 작업용
+  // let currId = currUrl.substring(29);
+  //배포용
+  let currId = currUrl.substring(36);
   console.log(currId);
 
   //클릭된 소스 이름에 맞는 레시피와 해시태그 가져오기

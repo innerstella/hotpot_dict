@@ -45,7 +45,7 @@ const AppRouter = ({ isLoggedIn }) => {
         <Route path="/salty" element={<Salty />} />
       </Routes>
       <Routes>
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

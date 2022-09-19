@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Home = () => {
   return (
     <div>
       <h1>훠궈 소스 백과사전</h1>
-      <input name="search" placeholder="소스 이름이 뭐였더라..." />
+      <Search />
       <br />
       <Link to="/total">
         <button>전체 목록</button>

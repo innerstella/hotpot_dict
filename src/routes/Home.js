@@ -30,7 +30,7 @@ const Home = () => {
     });
   };
 
-  // 소스명과 조회수 배열에 담기
+  // 소스명, 조회수, id 배열에 담기
   let i = 0;
   let srcList = [];
   while (i < recipe.length) {
@@ -39,10 +39,10 @@ const Home = () => {
       srcList.push({
         name: recipe[i].src_name,
         view: recipe[i].view_cnt,
-        id: i,
+        id: recipe[i].id,
       });
     } else if (recipe[i].view_cnt === undefined) {
-      srcList.push({ name: recipe[i].src_name, view: 0, id: i });
+      srcList.push({ name: recipe[i].src_name, view: 0, id: recipe[i].id });
     }
     i++;
   }
@@ -83,9 +83,11 @@ const Home = () => {
       <h3>인기 소스</h3>
       <ol>
         {srcList.map((src) => (
-          <li key={src.id}>
-            {src.name} ({src.view})
-          </li>
+          <Link to={`/detail/${src.id}`}>
+            <li key={src.id}>
+              {src.name} ({src.view})
+            </li>
+          </Link>
         ))}
       </ol>
 

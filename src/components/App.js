@@ -20,12 +20,11 @@ function App() {
   }, []);
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
-      {/* <Navigation isLoggedIn={isLoggedIn} /> */}
-      <footer>
-        {new Date().getFullYear()}.{new Date().getMonth() + 1}.
-        {new Date().getDate()} &copy; inner_stella__
-      </footer>
+      <center>
+        {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
+        {/* <Navigation isLoggedIn={isLoggedIn} /> */}
+        <footer>ver 1.0.0 &copy; inner_stella__</footer>
+      </center>
     </>
   );
 }

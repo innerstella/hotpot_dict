@@ -13,6 +13,8 @@ const MyPage = () => {
       <h2>My Page</h2>
       <p>{user}</p>
       <h3>좋아요 한 소스 목록</h3>
+      <p>~~만드는 중~~</p>
+      <br />
       <Link to="/">
         <button onClick={onLogOutClick}>로그아웃</button>
       </Link>

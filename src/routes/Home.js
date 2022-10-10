@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <div>
       <h1>훠궈 소스 백과사전</h1>
+      <p>😊베타 서비스 중😉</p>
       <Search />
       <br />
       <Link to="/total">
@@ -16,6 +17,7 @@ const Home = () => {
       </Link>
       <br />
       <h3>인기 소스</h3>
+      <p>~~만드는 중~~</p>
     </div>
   );
 };

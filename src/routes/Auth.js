@@ -68,16 +68,17 @@ const Auth = () => {
           value={password}
           onChange={onChange}
         />
+
         <input type="submit" value={newAccount ? "가입" : "로그인"} />
         <br />
+        <h5 onClick={toggleAccount}>
+          {newAccount
+            ? "이미 계정이 있으신가요? [로그인하기]"
+            : "처음 오셨나요? [회원 가입하기]"}
+        </h5>
+
         {error}
       </form>
-      <button onClick={toggleAccount}>
-        {newAccount ? "이미 계정이 있으신가요?" : "회원 가입하기"}
-      </button>
-      {/* <button onClick={onSocialClick} name="twitter">
-        트위터로 로그인하기
-      </button> */}
     </div>
   );
 };

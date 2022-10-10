@@ -30,7 +30,6 @@ const Total = () => {
             <p>{src.name}</p>
           </Link>
           <p>{src.keyword}</p>
-          <p>{src.id}</p>
           <hr />
         </div>
       ))}

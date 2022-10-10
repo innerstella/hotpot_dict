@@ -1,7 +1,7 @@
 import React from "react";
 import { dbService } from "../../fbase";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import KeywordNavigatior from "../../components/KeywordNavigator";
 
 const Nutty = () => {
@@ -43,7 +43,9 @@ const Nutty = () => {
       <h2>고소</h2>
       {recipe.map((src) => (
         <div key={src.id}>
-          <p onClick={onRecipeClick}>{src.name}</p>
+          <Link to={`/detail/${src.id}`}>
+            <p>{src.name}</p>
+          </Link>
           <p>{src.keyword}</p>
           <hr />
         </div>

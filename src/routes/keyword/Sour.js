@@ -2,7 +2,7 @@ import React from "react";
 import { dbService } from "../../fbase";
 import { useState, useEffect } from "react";
 import KeywordNavigatior from "../../components/KeywordNavigator";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Sour = () => {
   //DB에서 데이터 가져오기
@@ -42,7 +42,9 @@ const Sour = () => {
       <h2>새콤</h2>
       {recipe.map((src) => (
         <div key={src.id}>
-          <p onClick={onRecipeClick}>{src.name}</p>
+          <Link to={`/detail/${src.id}`}>
+            <p>{src.name}</p>
+          </Link>
           <p>{src.keyword}</p>
           <hr />
         </div>

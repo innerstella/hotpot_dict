@@ -18,12 +18,14 @@ function App() {
       setInit(true);
     });
   }, []);
+
   return (
     <>
       <center>
         {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
-        {/* <Navigation isLoggedIn={isLoggedIn} /> */}
-        <footer>ver 1.0.0 &copy; inner_stella__</footer>
+        <footer>
+          <p>ver 1.0.0 &copy; inner_stella__</p>
+        </footer>
       </center>
     </>
   );

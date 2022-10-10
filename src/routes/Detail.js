@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "../fbase";
+import { FieldValue } from "../fbase";
 
 const Detail = () => {
   //목록에서 클릭된 소스 이름 가져오기
@@ -13,21 +14,22 @@ const Detail = () => {
   //클릭된 소스 이름에 맞는 레시피와 해시태그 가져오기
   const getRecipe = async () => {
     const dbRecipes = await dbService.collection("source").doc(currId);
-    // dbRecipes.get().then((doc) => {
-    //   console.log(doc.data());
-    // });
     dbRecipes.get().then((doc) => {
       const recipeObject = {
         ...doc.data(),
         name: doc.name,
         id: doc.id,
+        view_cnt: doc.view,
       };
       setRecipe((prev) => [recipeObject, ...prev]);
-      console.log(dbRecipes.get().name);
+      console.log(recipeObject.view);
     });
-  };
+    // 페이지 방문 시, view 1 증가
+    const increment = FieldValue.increment(1);
 
-  const [recipeName, setRecipeName] = useState("");
+    dbRecipes.update({ view: increment });
+    dbRecipes.update({ view_cnt: increment });
+  };
 
   const [recipe, setRecipe] = useState([]);
   useEffect(() => {
@@ -48,14 +50,8 @@ const Detail = () => {
 
   // 소스 재료 클릭시 취소선
   const onSourceSelected = (e) => {
-    console.log(e.target);
     const delLine = e.target.style.textDecoration;
-    // {
-    //   delLine === "" ? (delLine = "line-through") : (delLine = "");
-    // }
-    console.log(delLine);
     if (delLine === "") {
-      console.log("yet");
       e.target.style.textDecoration = "line-through";
     } else if (delLine === "line-through") {
       e.target.style.textDecoration = "";

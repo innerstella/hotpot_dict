@@ -21,12 +21,6 @@ const AppRouter = ({ isLoggedIn }) => {
         <Route path="/" element={<Home />} />
       </Routes>
       <Routes>
-        <Route path="/mypage" element={<MyPage />} />
-      </Routes>
-      <Routes>
-        <Route path="/auth" element={<Auth />} />
-      </Routes>
-      <Routes>
         <Route path="/total" element={<Total />} />
       </Routes>
       <Routes>

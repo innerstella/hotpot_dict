@@ -9,13 +9,14 @@ import Sweet from "../routes/keyword/Sweet";
 import Sour from "../routes/keyword/Sour";
 import Nutty from "../routes/keyword/Nutty";
 import Salty from "../routes/keyword/Salty";
-import MyPage from "../routes/MyPage";
 import Detail from "../routes/Detail";
+import Popular from "../routes/Popular";
+import SearchPage from "../routes/SearchPage";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
     <BrowserRouter>
-      <Navigation />
+      {/* <Navigation /> */}
       {/* {isLoggedIn && <Navigation />} */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -23,6 +24,10 @@ const AppRouter = ({ isLoggedIn }) => {
       <Routes>
         <Route path="/total" element={<Total />} />
       </Routes>
+      <Routes>
+        <Route path="/popular" element={<Popular />} />
+      </Routes>
+
       <Routes>
         <Route path="/spicy" element={<Spicy />} />
       </Routes>
@@ -40,6 +45,9 @@ const AppRouter = ({ isLoggedIn }) => {
       </Routes>
       <Routes>
         <Route path="/detail/:id" element={<Detail />} />
+      </Routes>
+      <Routes>
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
     </BrowserRouter>
   );

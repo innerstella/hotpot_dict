@@ -1,9 +1,7 @@
-import React from "react";
-import { dbService } from "../../fbase";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { dbService } from "../fbase";
 import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
-import KeyNav from "./KeyNav";
 
 let RedRec = styled.div`
   position: relative;
@@ -77,26 +75,28 @@ let Menu = styled.div`
 
   font-family: "SUIT", sans-serif;
 `;
+
 let List = styled.div`
   position: relative;
-  top: 7rem;
-
-  overflow: scroll;
-  height: 18rem;
+  top: 5rem;
   width: 70%;
 `;
 let SrcDiv = styled.div`
   display: flex;
   justify-content: space-between;
 
-  padding: 1rem;
+  padding: 0.3rem;
 `;
-
+let Video = styled.div`
+  position: relative;
+  width: 80%;
+  top: 6.5rem;
+`;
 let Footer = styled.p`
   position: relative;
-  top: 7rem;
+  top: 5.8rem;
 
-  font-family: "Inter";
+  font-family: "SUIT", sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -105,23 +105,56 @@ let Footer = styled.p`
   color: #bababa;
 `;
 
-const Spicy = () => {
+const Popular = () => {
   //DB에서 데이터 가져오기
+  const [recipe, setRecipe] = useState([]);
 
   const getRecipe = async () => {
     const dbRecipes = await dbService.collection("source").get();
     dbRecipes.forEach((document) => {
-      if (document.data().keyword === "새콤") {
-        const recipeObject = {
-          ...document.data(),
-          id: document.id,
-        };
-        setRecipe((prev) => [recipeObject, ...prev]);
-      }
+      const recipeObject = {
+        ...document.data(),
+        id: document.id,
+        view: document.view,
+      };
+      setRecipe((prev) => [recipeObject, ...prev]);
     });
   };
 
-  const [recipe, setRecipe] = useState([]);
+  // 소스명, 조회수, id 배열에 담기
+  let i = 0;
+  let srcList = [];
+  while (i < recipe.length) {
+    // console.log(recipe[i].src_name, recipe[i].view_cnt);
+    if (recipe[i].view_cnt !== undefined) {
+      srcList.push({
+        name: recipe[i].src_name,
+        view: recipe[i].view_cnt,
+        id: recipe[i].id,
+        keyword: recipe[i].keyword,
+      });
+    } else if (recipe[i].view_cnt === undefined) {
+      srcList.push({ name: recipe[i].src_name, view: 0, id: recipe[i].id });
+    }
+    i++;
+  }
+  // console.log(srcList);
+
+  // 높은 조회수 순 정렬
+  srcList.sort(function (a, b) {
+    if (a.view > b.view) {
+      return -1;
+    }
+    if (a.view < b.view) {
+      return 1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+
+  // 조회수 top 5 자르기
+  srcList = srcList.slice(0, 5);
+
   useEffect(() => {
     getRecipe();
   }, []);
@@ -135,6 +168,7 @@ const Spicy = () => {
           <Icon alt="hotpot" src="img/icon.png" />
         </RedRec>
       </Link>
+
       <Link to="/search">
         <SearchInput placeholder="   🔍  소스 이름 검색하기" />
       </Link>
@@ -150,17 +184,6 @@ const Spicy = () => {
         >
           <span>전체 소스</span>
         </Link>
-        <Link
-          to="/popular"
-          style={{
-            color: "black",
-            fontWeight: "600",
-            textDecorationLine: "underline",
-            textUnderlinePosition: "under",
-          }}
-        >
-          <span>인기 소스</span>
-        </Link>
         <span
           style={{
             color: "#BC1D1B",
@@ -169,13 +192,22 @@ const Spicy = () => {
             textUnderlinePosition: "under",
           }}
         >
-          키워드 검색
+          인기 소스
         </span>
+        <Link
+          to="/spicy"
+          style={{
+            color: "black",
+            fontWeight: "600",
+            textDecorationLine: "underline",
+            textUnderlinePosition: "under",
+          }}
+        >
+          <span>키워드 검색</span>
+        </Link>
       </Menu>
-      <KeyNav></KeyNav>
-
       <List>
-        {recipe.map((src) => (
+        {srcList.map((src) => (
           <SrcDiv key={src.id} value={src.name}>
             <Link
               to={`/detail/${src.id}`}
@@ -184,8 +216,8 @@ const Spicy = () => {
               <span
                 style={{ fontWeight: "400", fontFamily: '"SUIT", sans-serif' }}
               >
-                {src.name}
-                <span style={{ color: "#AE2F1E" }}> # {src.keyword} </span>
+                🔴 {src.name}{" "}
+                <span style={{ color: "#AE2F1E" }}># {src.keyword} </span>
               </span>
             </Link>
             <span
@@ -196,9 +228,20 @@ const Spicy = () => {
           </SrcDiv>
         ))}
       </List>
-      <Footer>ver 1.0.0 &copy; inner_stella__</Footer>
+      <center>
+        <Video>
+          <iframe
+            title="video"
+            width="330"
+            height="186"
+            src="https://www.youtube.com/embed/gRnuFC4Ualw?rel=0&amp;autoplay=1&mute=1&amp;loop=1;playlist=영상키값"
+            frameBorder="0"
+          ></iframe>
+        </Video>
+        <Footer>ver 1.0.0 &copy; inner_stella__</Footer>
+      </center>
     </div>
   );
 };
 
-export default Spicy;
+export default Popular;

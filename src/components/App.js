@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { authService } from "../fbase";
-import Navigation from "./Navigation";
 import AppRouter from "./Router";
+import styled from "styled-components";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -23,9 +23,6 @@ function App() {
     <>
       <center>
         {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
-        <footer>
-          <p>ver 1.0.0 &copy; inner_stella__</p>
-        </footer>
       </center>
     </>
   );

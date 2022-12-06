@@ -6,6 +6,16 @@
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
    <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
    <img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
-   <br/>
-   
-</div>
+   <br/><br/>
+   <img src="hotpot.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+</div><br/>
+
+🔗 https://hotpot-8c321.web.app/
+- 다양한 훠궈 소스 레시피를 한 곳에서 모아볼 수 있습니다.
+- 전체 목록, 인기 소스, 키워드 검색을 통해 자신에게 맞는 훠궈 소스 레시피를 찾아볼 수 있습니다.
+- 레시피 상세 화면에서는 이미 넣은 소스는 체크하여 헷갈리지 않게 소스를 제조할 수 있습니다.
+
+<br/>
+
+## 개발일지
+1️⃣ 

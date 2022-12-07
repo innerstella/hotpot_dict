@@ -18,4 +18,4 @@
 <br/>
 
 ## 개발일지
-1️⃣ 
+1️⃣ [하이디라오 훠궈 소스 백과사전](https://inner-stella.tistory.com/entry/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-%ED%95%98%EC%9D%B4%EB%94%94%EB%9D%BC%EC%98%A4-%ED%9B%A0%EA%B6%88-%EC%86%8C%EC%8A%A4-%EB%B0%B1%EA%B3%BC%EC%82%AC%EC%A0%84)
